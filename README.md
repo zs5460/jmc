@@ -10,7 +10,7 @@ jmc is a Go implementation of the encrypted-config-value library.
 ## Install
 
 ```shell
-go install github.com/zs5460/jmc/cmd/jmc
+go install github.com/zs5460/jmc/cmd/jmc@latest
 ```
 
 ## Usage

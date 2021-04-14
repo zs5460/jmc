@@ -7,7 +7,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"log"
 	"os"
 
 	"github.com/zs5460/jmc"
@@ -26,7 +25,6 @@ func main() {
 	flag.Parse()
 
 	p = os.Getenv("JMC_K")
-	log.Println(p)
 	if len(p) == 16 || len(p) == 24 || len(p) == 32 {
 		jmc.K = p
 	}
