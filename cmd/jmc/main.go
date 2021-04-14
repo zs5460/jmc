@@ -1,8 +1,13 @@
+// Copyright 2021 zs. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
+
 package main
 
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/zs5460/jmc"
@@ -12,12 +17,19 @@ import (
 var (
 	m string
 	i string
+	p string
 )
 
 func main() {
-	flag.StringVar(&m, "mode", "encode", "encode or decode")
-	flag.StringVar(&i, "input", "config.json", "")
+	flag.StringVar(&m, "m", "encode", "mode:encode or decode")
+	flag.StringVar(&i, "i", "config.json", "input file name")
 	flag.Parse()
+
+	p = os.Getenv("JMC_K")
+	log.Println(p)
+	if len(p) == 16 || len(p) == 24 || len(p) == 32 {
+		jmc.K = p
+	}
 
 	cnt, err := my.ReadText(i)
 	if err != nil {

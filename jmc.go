@@ -1,3 +1,7 @@
+// Copyright 2021 zs. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
+
 package jmc
 
 import (
@@ -12,17 +16,25 @@ import (
 )
 
 var (
+	// K is an AES key that can be used for AES encryption and decryption operations. You should set an environment variable called "JMC_K" to change it.
 	K  = "zs5460@gmail.com"
 	re = regexp.MustCompile(`\${enc:([^}]+)}`)
 )
 
-var configParser = make(map[string]func(string, interface{}) error, 0)
+var configParser = make(map[string]func(string, interface{}) error)
 
 func init() {
 	configParser[".json"] = LoadJSONConfig
 	configParser[".xml"] = LoadXMLConfig
+
+	p := os.Getenv("JMC_K")
+	if len(p) == 16 || len(p) == 24 || len(p) == 32 {
+		K = p
+	}
+
 }
 
+// Encode ...
 func Encode(s string) string {
 	if !strings.Contains(s, "${enc:") {
 		return s
@@ -35,6 +47,7 @@ func Encode(s string) string {
 	return s
 }
 
+// Decode ...
 func Decode(s string) (string, error) {
 	if !strings.Contains(s, "${enc:") {
 		return s, nil
@@ -80,10 +93,10 @@ func LoadXMLConfig(fn string, v interface{}) error {
 
 // MustLoadConfig load config or panic.
 func MustLoadConfig(fn string, v interface{}) {
-	configtype := path.Ext(fn)
-	parser, exist := configParser[configtype]
+	configFileType := path.Ext(fn)
+	parser, exist := configParser[configFileType]
 	if !exist {
-		panic("unsupported config file.")
+		panic("file types that are not supported.")
 	}
 	err := parser(fn, v)
 	if err != nil {
