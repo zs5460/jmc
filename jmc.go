@@ -9,6 +9,7 @@ import (
 	"encoding/xml"
 	"os"
 	"path"
+	"path/filepath"
 	"regexp"
 	"strings"
 
@@ -102,4 +103,18 @@ func MustLoadConfig(fn string, v interface{}) {
 	if err != nil {
 		panic("config file parse error.")
 	}
+}
+
+// GetAppConfig returns the config path name for the executable that started
+// the current process.
+func GetAppConfig() string {
+	app, err := os.Executable()
+	if err != nil {
+		panic(err)
+	}
+	if ext := filepath.Ext(app); ext != "" {
+		app = strings.TrimRight(app, ext)
+	}
+	app += ".json"
+	return app
 }
