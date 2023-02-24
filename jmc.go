@@ -113,7 +113,7 @@ func GetAppConfig() string {
 		panic(err)
 	}
 	if ext := filepath.Ext(app); ext != "" {
-		app = strings.TrimRight(app, ext)
+		app = strings.TrimSuffix(app, ext)
 	}
 	app += ".json"
 	return app
