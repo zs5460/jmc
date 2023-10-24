@@ -1,4 +1,8 @@
 github.com/zs5460/jm v0.0.0-20210209073707-19641e9a152c h1:xYMFiJTsZC2Axg7MTB+g6QHKZQtggj27p2X8pY7QiQg=
 github.com/zs5460/jm v0.0.0-20210209073707-19641e9a152c/go.mod h1:DwySHg9QQQhhQIVuKhnnzHbhtEkYMixqX+S9acjCkJQ=
+github.com/zs5460/jm v0.0.1 h1:zikoRKVyfeeHgPaDmdaCDmNbt2t5V3yQYzO9YE5kWYw=
+github.com/zs5460/jm v0.0.1/go.mod h1:DwySHg9QQQhhQIVuKhnnzHbhtEkYMixqX+S9acjCkJQ=
 github.com/zs5460/my v0.0.7 h1:UmFu7h286bDuyTO9kfROlwCm9+lsAxA5oDAlhtZogo4=
 github.com/zs5460/my v0.0.7/go.mod h1:ENZ9+E1nPF8f5GNg5pq+0DqAP81Aqa1NEqM2gzOZ8gY=
+github.com/zs5460/my v0.0.8 h1:fCD+FmQPrh0VQaxdJW9Ks/hWMF9HtgAyIoSdzlPpl7M=
+github.com/zs5460/my v0.0.8/go.mod h1:ENZ9+E1nPF8f5GNg5pq+0DqAP81Aqa1NEqM2gzOZ8gY=
