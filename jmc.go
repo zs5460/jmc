@@ -118,3 +118,19 @@ func GetAppConfig() string {
 	app += ".json"
 	return app
 }
+
+func LoadJSONString(jsonString string, v interface{}) error {
+	decoded, err := Decode(jsonString)
+	if err != nil {
+		return err
+	}
+	err = json.Unmarshal([]byte(decoded), v)
+	return err
+}
+
+func MustLoadJSONString(jsonString string, v interface{}) {
+	err := LoadJSONString(jsonString, v)
+	if err != nil {
+		panic(err)
+	}
+}
